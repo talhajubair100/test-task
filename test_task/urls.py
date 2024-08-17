@@ -24,6 +24,7 @@ from .views import resend_verfication, resend_email
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('', include('events.urls')),
     re_path('accounts/resend-verification', resend_verfication, name='resend_verfication'),
     re_path('accounts/resend-email', resend_email, name='resend_email'),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
