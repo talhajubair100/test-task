@@ -1,0 +1,32 @@
+{% extends "frontend/base.html" %}
+{% load i18n %}
+{% block head_title %}
+{% trans "Verify Your E-mail Address" %}{% endblock %} {% block content %}
+<!-- Start Main Section -->
+
+
+<section class="how_it_works bg-gray-100 mt-5 py-10">
+	<div class="container mx-auto">
+	  <div class="flex justify-center">
+		<div class="text-center">
+		  <h1 class="text-4xl font-bold text-purple-800 mb-4">
+			Please Verify Your Email
+		  </h1>
+		  <p class="mb-4">
+			If you can't find the mail in your email, please check your email's 
+			<span class="text-red-600 font-bold">junk or spam folder</span>.
+		  </p>
+		  <a href="{% url 'resend_email' %}">
+			<button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+			  Send Again
+			</button>
+		  </a>
+		</div>
+	  </div>
+	</div>
+  </section>
+  
+  <!-- Extra spacing -->
+  <div class="my-32"></div>
+  
+{% endblock %}

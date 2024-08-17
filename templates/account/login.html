@@ -1,0 +1,91 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% load i18n %}
+{% load account socialaccount %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block content %}
+{% include "socialaccount/snippets/login_extra.html" %}
+
+
+
+
+
+<section class="mb-36">
+	<div class="container mx-auto">
+		<div class="flex justify-between items-center">
+			<div class="lg:w-1/2 md:w-3/4 w-full mx-auto mb-12">
+				<div class="text-center my-10">
+					<h2 class="text-3xl font-bold">Login</h2>
+				</div>
+
+				<form method="post">
+					{% csrf_token %}
+					<div class="mb-4">
+
+						{{ form.login }}
+					</div>
+
+					<div class="mb-4 relative">
+
+						{{ form.password }}
+
+						<span id="togglePassword" role="button"
+							class="icofont-eye-blocked absolute right-2 top-3 cursor-pointer z-10"></span>
+					</div>
+
+					{% if form.errors %}
+					{% for field in form %}
+					{% for error in field.errors %}
+					<div class="alert alert-error">
+						<div class="alert alert-danger" role="alert">
+							<strong>{{ error|escape }}</strong>
+						</div>
+					</div>
+					{% endfor %}
+					{% endfor %}
+					{% for error in form.non_field_errors %}
+					<div class="alert alert-error">
+						<div class="alert alert-danger" role="alert">
+							<strong>{{ error|escape }}</strong>
+						</div>
+					</div>
+					{% endfor %}
+					{% endif %}
+
+					<div class="text-center mb-10">
+						<button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="button2">Login</button>
+					</div>
+
+					<p class="mt-2">Do you have any accounts? <span><a class="underline hover:text-blue-500"
+								href="{% url 'account_signup' %}">Create Account</a></span></p>
+					<p class="mt-2">Forgot your password? <span><a class="underline hover:text-blue-500"
+								href="{% url 'account_reset_password' %}">Reset Password</a></span></p>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+{% endblock %}
+
+{% block js %}
+
+
+<script>
+	const togglePassword = document.querySelector('#togglePassword');
+	const password = document.querySelector('#id_password');
+
+	togglePassword.addEventListener('click', function (e) {
+		// toggle the type attribute
+		const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+		password.setAttribute('type', type);
+		// toggle the eye slash icon
+		this.classList.toggle('fa-eye-slash');
+	});
+</script>
+
+{% endblock %}

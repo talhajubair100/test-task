@@ -1,0 +1,113 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% load i18n %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block head_title %}
+{% trans "Signup" %}
+{% endblock %}
+{% block content %}
+
+
+
+
+<section class="contact_page_section mb-36">
+	<div class="container mx-auto">
+	  <div class="row justify-between items-center">
+		<div class="lg:w-1/2 md:w-3/4 w-full mx-auto my-12">
+		  <div class="text-3xl font-bold text-center mb-8">
+			<h2>Signup</h2>
+		  </div>
+		  <form method="post" action="">
+			{% csrf_token %}
+			<div class="mb-4">
+			  <input type="email" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email address" class="w-full px-4 py-2 border rounded">
+			</div>
+			<div class="mb-4 relative" id="show_hide_password">
+			  <input type="password" name="password1" id="id_password" aria-describedby="emailHelp" placeholder="Password" class="w-full px-4 py-2 border rounded">
+			  <span id="togglePassword" role="button" toggle="#password-field" class="absolute right-4 top-2.5 cursor-pointer z-10">
+				<i class="icofont-eye-blocked"></i>
+			  </span>
+			</div>
+			<div class="mb-4 relative" id="show_hide_password2">
+			  <input type="password" name="password2" id="id_password2" aria-describedby="emailHelp" placeholder="Retype Password" class="w-full px-4 py-2 border rounded">
+			  <span id="togglePassword2" role="button" toggle="#password-field" class="absolute right-4 top-2.5 cursor-pointer z-10">
+				<i class="icofont-eye-blocked"></i>
+			  </span>
+			  <span id="message"></span>
+			</div>
+			{% if form.errors %}
+			{% for field in form %}
+			{% for error in field.errors %}
+			<div class="text-red-500 mb-4">
+			  <strong>{{ error|escape }}</strong>
+			</div>
+			{% endfor %}
+			{% endfor %}
+			{% for error in form.non_field_errors %}
+			<div class="text-red-500 mb-4">
+			  <strong>{{ error|escape }}</strong>
+			</div>
+			{% endfor %}
+			{% endif %}
+			<div class="text-center mb-10">
+			  <button type="submit"  class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="button2">Signup here</button>
+			</div>
+			<p class="text-center">Already have an account? <a class="underline hover:text-blue-500" href="{% url 'account_login' %}">Login here</a></p>
+		  </form>
+		</div>
+	  </div>
+	</div>
+  </section>
+  
+
+{% endblock %}
+
+{% block js %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+	const togglePassword = document.querySelector('#togglePassword');
+	const password = document.querySelector('#id_password');
+
+	togglePassword.addEventListener('click', function (e) {
+		// toggle the type attribute
+		const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+		password.setAttribute('type', type);
+		// toggle the eye slash icon
+		this.classList.toggle('icofont-eye-alt');
+	});
+</script>
+
+
+<script>
+	const togglePassword2 = document.querySelector('#togglePassword2');
+	const password2 = document.querySelector('#id_password2');
+
+	togglePassword2.addEventListener('click', function (e) {
+		// toggle the type attribute
+		const type = password2.getAttribute('type') === 'password' ? 'text' : 'password';
+		password2.setAttribute('type', type);
+		// toggle the eye slash icon
+		this.classList.toggle('icofont-eye-alt');
+	});
+</script>
+
+<script>
+
+$('#id_password, #id_password2').on('keyup', function () {
+	if ($('#id_password').val() == $('#id_password2').val()) {
+	  $('#message').html('Matching').css('color', 'green');
+	} else 
+	  $('#message').html('Not Matching').css('color', 'red');
+  });
+  
+
+</script>
+
+
+
+
+{% endblock %}

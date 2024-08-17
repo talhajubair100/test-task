@@ -1,0 +1,33 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
+
+{% block content %}
+
+<div class="breadcrumbs_aree breadcrumbs_bg mb-140"
+    style='background-image: url(/static/assets/img/bg/breadcrumbs-bg.webp);'>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumbs_text text-center">
+                    <h1>Sign Up Closed</h1>
+                    <ul class="d-flex justify-content-center">
+                        <li><a href="{% url 'home' %}">Home </a></li>
+                        <li> <span>//</span></li>
+                        <li> PAGES</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center mb-5">
+    <h1>{% trans "Sign Up Closed" %}</h1>
+
+    <p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+</div>
+
+{% endblock %}
