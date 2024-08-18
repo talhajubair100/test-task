@@ -6,14 +6,15 @@
 <section class="text-gray-600 body-font overflow-hidden">
     <div class="container px-5 py-6 mx-auto">
 
-        
 
 
+        {% if events %}
         <div class="grid grid-cols-3">
             {% for event in events %}
 
             <div class="p-12 flex flex-col items-start">
-                <a href="{% url 'event_details' event.id  %}" class="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">
+                <a href="{% url 'event_details' event.id  %}"
+                    class="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">
                     {{ event.title|truncatechars:40 }}</a>
                 <p class="leading-relaxed mb-8">{{ event.description|truncatechars:200 }}.</p>
                 <div class="flex flex-col pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
@@ -67,6 +68,11 @@
             {% endfor %}
 
         </div>
+        {% else %}
+        <div class="text-center py-6">
+            <p class="text-gray-600 text-lg">No data found</p>
+        </div>
+        {% endif %}
     </div>
 </section>
 
