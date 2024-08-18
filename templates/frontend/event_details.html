@@ -8,13 +8,11 @@
     <div class="container px-5 py-6 mx-auto">
 
         <div class="p-12 flex flex-col items-start">
-            <a href="#" class="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">{{ event.title }}</a>
+            <p class="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">{{ event.title }}</p>
             <p class="leading-relaxed mb-8">{{ event.description }}.</p>
-            <div
-                class="flex flex-col pb-4 mb-4">
+            <div class="flex flex-col pb-4">
 
-                <span
-                    class="text-gray-900 inline-flex items-center leading-none text-sm py-1 border-gray-200">
+                <span class="text-gray-900 inline-flex items-center leading-none text-sm py-1 border-gray-200">
                     <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
                         stroke-linejoin="round" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -22,8 +20,7 @@
                         <line x1="12" y1="12" x2="16" y2="14"></line>
                     </svg>Date- {{ event.date }}
                 </span>
-                <span
-                    class="text-gray-900 inline-flex items-center leading-none text-sm py-1 border-gray-200">
+                <span class="text-gray-900 inline-flex items-center leading-none text-sm py-1 border-gray-200">
                     <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
                         stroke-linejoin="round" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -31,17 +28,40 @@
                         <line x1="12" y1="12" x2="16" y2="14"></line>
                     </svg>Time- {{ event.time }}
                 </span>
-                <span
-                    class="text-gray-900 inline-flex items-center leading-none text-sm  py-1">
+                <span class="text-gray-900 inline-flex items-center leading-none text-sm  py-1">
                     <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
                         stroke-linejoin="round" viewBox="0 0 24 24">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
                     </svg> {{ event.slots }} slots
                 </span>
-                
+
+                <span class="text-gray-900 inline-flex items-center leading-none text-sm  py-1">
+                    <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg> {{ event.booking_slots }} booked
+                </span>
+
             </div>
+
+            <span class="text-gray-900 inline-flex items-center leading-none text-sm  py-1">
+                <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z">
+                    </path>
+                </svg> {{ event.location }}
+            </span>
         </div>
+        <form action="{% url 'user_register_event' %}" method="get">
+            <input type="hidden" name="event_id" value="{{ event.id }}">
+            <button type="submit"
+                class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                Register for event
+            </button>
+        </form>
     </div>
 </section>
 

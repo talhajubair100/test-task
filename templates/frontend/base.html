@@ -41,7 +41,7 @@
                         {% if request.user.is_authenticated %}
                         <li
                             class="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-300 cursor-pointer text-base lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                            <a href="javascript: void(0)">My Events</a>
+                            <a href="{% url 'user_events' %}">User Dashboard</a>
                         </li>
                         {% endif %}
                     </ul>
@@ -100,6 +100,35 @@
                 </span>
             </div>
     </footer>
+
+    <!-- sweet alert message -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    {% if messages %}
+    {% for m in messages %}
+
+
+    <script>
+        // showing message is which type success or error
+        {% if m.tags == 'success' %}
+        Swal.fire({
+            "title": "Success",
+            "text": "{{ m }}",
+            "icon": "success"
+        })
+        {% endif %}
+        {% if m.tags == 'error' %}
+        Swal.fire({
+            "title": "Error",
+            "text": "{{ m }}",
+            "icon": "error"
+        })
+        {% endif %}
+
+    </script>
+    {% endfor %}
+    {% endif %}
+
+    </script>
 </body>
 
 </html>
