@@ -46,6 +46,7 @@ def user_register_event(request):
     
     registration = UserRegistration.objects.create(user=user, event=event)
     registration.save()
+    messages.success(request, 'You have successfully registered for the event')
     return redirect('user_events')
 
 @login_required(login_url='account_login')
@@ -62,6 +63,7 @@ def user_unregister_event(request):
         event.save()
     registration = UserRegistration.objects.get(user=user, event=event)
     registration.delete()
+    messages.success(request, 'You have successfully unregistered from the event')
     return redirect('user_events')
 
 @login_required(login_url='account_login')
