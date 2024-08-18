@@ -194,6 +194,6 @@ ACCOUNT_FORMS = {
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 
   
 #or any other page
-ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
 # login redirect url
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'home'

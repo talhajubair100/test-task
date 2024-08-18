@@ -1,0 +1,48 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<section class="text-gray-600 body-font overflow-hidden">
+    <div class="container px-5 py-6 mx-auto">
+
+        <div class="p-12 flex flex-col items-start">
+            <a href="#" class="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">{{ event.title }}</a>
+            <p class="leading-relaxed mb-8">{{ event.description }}.</p>
+            <div
+                class="flex flex-col pb-4 mb-4">
+
+                <span
+                    class="text-gray-900 inline-flex items-center leading-none text-sm py-1 border-gray-200">
+                    <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="6" x2="12" y2="12"></line>
+                        <line x1="12" y1="12" x2="16" y2="14"></line>
+                    </svg>Date- {{ event.date }}
+                </span>
+                <span
+                    class="text-gray-900 inline-flex items-center leading-none text-sm py-1 border-gray-200">
+                    <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="6" x2="12" y2="12"></line>
+                        <line x1="12" y1="12" x2="16" y2="14"></line>
+                    </svg>Time- {{ event.time }}
+                </span>
+                <span
+                    class="text-gray-900 inline-flex items-center leading-none text-sm  py-1">
+                    <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg> {{ event.slots }} slots
+                </span>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
